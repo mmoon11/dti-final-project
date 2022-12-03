@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import PaymentIcon from "@mui/icons-material/Payment";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../components/layout/Navbar";
+import TransactionAddControl from "../components/transactions/TransactionAddControl";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -47,13 +48,13 @@ const theme = createTheme({
   },
 });
 
+const TransactionHeading = () => <Typography>Add a New Transaction</Typography>;
+
 export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          border: 2,
-          borderColor: "red",
           display: "flex",
           justifyContent: "center",
           height: "100%",
@@ -62,10 +63,8 @@ export default function Home() {
         }}
       >
         <Navbar />
-        <Typography>SaveMoney</Typography>
-        <Button variant="contained" endIcon={<PaymentIcon />} size="large">
-          New Transaction
-        </Button>
+        <TransactionHeading />
+        <TransactionAddControl />
       </Box>
     </ThemeProvider>
   );
