@@ -12,6 +12,10 @@ const navData: NavLink[] = [
     path: "/",
   },
   {
+    name: "New Transaction",
+    path: "/newTransaction",
+  },
+  {
     name: "Transactions",
     path: "/transactions",
   },
