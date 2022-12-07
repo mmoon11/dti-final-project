@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Grocery, GroceryWithId } from "../../types";
 import TransactionsList from "./TransactionsList";
 
-const groceriesCollectionRef = collection(db, "tasks");
+const groceriesCollectionRef = collection(db, "groceries");
 const groceryQuery = query(groceriesCollectionRef);
 
 const TransactionsDisplay = () => {
@@ -29,11 +29,11 @@ const TransactionsDisplay = () => {
 
   return (
     <Box>
-      <Typography>Hello</Typography>
+      <Typography>Groceries</Typography>
       {groceries ? (
         <TransactionsList groceries={groceries} />
       ) : (
-        <Typography>nothing</Typography>
+        <Typography>No transactions!</Typography>
       )}
     </Box>
   );

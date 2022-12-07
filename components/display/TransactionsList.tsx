@@ -14,7 +14,7 @@ const TransactionsList = ({ groceries }: Props) => {
           <GroceryItem key={grocery.id} groceryName={grocery.name} />
         ))
       ) : (
-        <Typography>The list is looking kinda empty 👀</Typography>
+        <Typography>No transactions!</Typography>
       )}
     </Box>
   );

@@ -15,10 +15,6 @@ const navData: NavLink[] = [
     name: "New Transaction",
     path: "/newTransaction",
   },
-  {
-    name: "Transactions",
-    path: "/transactions",
-  },
 ];
 
 const Navbar = () => (

@@ -5,7 +5,7 @@ type Props = {
   readonly groceryName: string;
 };
 
-const TaskItem = ({ groceryName }: Props) => {
+const GroceryItem = ({ groceryName }: Props) => {
   return (
     <Box>
       <Typography>{groceryName}</Typography>
@@ -13,4 +13,4 @@ const TaskItem = ({ groceryName }: Props) => {
   );
 };
 
-export default TaskItem;
+export default GroceryItem;

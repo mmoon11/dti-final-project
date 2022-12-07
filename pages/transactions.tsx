@@ -48,13 +48,11 @@ const theme = createTheme({
   },
 });
 
-export default function Home() {
+export default function Transactions() {
   return (
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          border: 2,
-          borderColor: "red",
           display: "flex",
           justifyContent: "center",
           height: "100%",

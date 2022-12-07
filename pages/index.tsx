@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import PaymentIcon from "@mui/icons-material/Payment";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../components/layout/Navbar";
+import TransactionsDisplay from "../components/display/TransactionsDisplay";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -52,8 +53,6 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          border: 2,
-          borderColor: "red",
           display: "flex",
           justifyContent: "center",
           height: "100%",
@@ -66,6 +65,18 @@ export default function Home() {
         <Button variant="contained" endIcon={<PaymentIcon />} size="large">
           New Transaction
         </Button>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            height: "100%",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <TransactionsDisplay></TransactionsDisplay>
+        </Box>
       </Box>
     </ThemeProvider>
   );
