@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import PaymentIcon from "@mui/icons-material/Payment";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../components/layout/Navbar";
 import TransactionsDisplay from "../components/display/TransactionsDisplay";
-import Link from "next/link";
+import { signInWithGoogle } from "../util/firebase";
+import { useAuth } from "../components/auth/AuthUserProvider";
+import { Spinner } from "@chakra-ui/react";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -50,6 +51,8 @@ const theme = createTheme({
 });
 
 export default function Home() {
+  const { user, loading } = useAuth();
+
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -65,29 +68,24 @@ export default function Home() {
         <Typography variant="h3" sx={{ margin: 2 }}>
           SaveMoney
         </Typography>
-        {/* <Button
-          variant="contained"
-          endIcon={<PaymentIcon />}
-          size="large"
-          sx={{ margin: 2 }}
-          onClick={() => {
-            <Link key={"/newTransaction"} href={"/newTransaction"}></Link>;
-          }}
-        >
-          New Transaction
-        </Button> */}
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            height: "100%",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <TransactionsDisplay></TransactionsDisplay>
-        </Box>
+        {loading ? (
+          <Spinner />
+        ) : user ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              height: "100%",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <TransactionsDisplay></TransactionsDisplay>
+          </Box>
+        ) : (
+          <Button onClick={signInWithGoogle}>Sign In</Button>
+        )}
       </Box>
     </ThemeProvider>
   );

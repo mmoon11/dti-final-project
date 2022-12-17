@@ -1,6 +1,12 @@
-import { initializeApp, getApps, getApp, getAuth } from "firebase/app";
+import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import withFirebaseAuth from "react-with-firebase-auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAE0lkeKybpOqoPk7fevm5-UZV0o1UAsR8",
@@ -14,9 +20,6 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
-
-// other Firebase setup stuff
-
 const auth = getAuth(app);
 
 const providers = {

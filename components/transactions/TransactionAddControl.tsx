@@ -4,10 +4,13 @@ import { FormEventHandler, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../util/firebase";
 import { Grocery } from "../../types";
+import { useAuth } from "../auth/AuthUserProvider";
 
 const TransactionAddControl = () => {
   const [groceryInput, setGroceryInput] = useState("");
   const [amountInput, setAmountInput] = useState(0);
+
+  const { user } = useAuth();
 
   const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     setGroceryInput(event.target.value);
@@ -24,6 +27,7 @@ const TransactionAddControl = () => {
     const grocery: Grocery = {
       name: groceryInput,
       amount: amountInput,
+      owner: user!.uid,
     };
     const groceriesCollectionRef = collection(db, "groceries");
     await addDoc(groceriesCollectionRef, grocery);
