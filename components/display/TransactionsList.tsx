@@ -11,7 +11,7 @@ const TransactionsList = ({ groceries }: Props) => {
     <Box>
       {groceries.length ? (
         groceries.map((grocery) => (
-          <GroceryItem key={grocery.id} groceryName={grocery.name} />
+          <GroceryItem key={grocery.id} grocery={grocery} />
         ))
       ) : (
         <Typography>No transactions!</Typography>

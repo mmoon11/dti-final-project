@@ -4,6 +4,7 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../components/layout/Navbar";
 import TransactionsDisplay from "../components/display/TransactionsDisplay";
+import Link from "next/link";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -61,10 +62,20 @@ export default function Home() {
         }}
       >
         <Navbar />
-        <Typography>SaveMoney</Typography>
-        <Button variant="contained" endIcon={<PaymentIcon />} size="large">
+        <Typography variant="h3" sx={{ margin: 2 }}>
+          SaveMoney
+        </Typography>
+        {/* <Button
+          variant="contained"
+          endIcon={<PaymentIcon />}
+          size="large"
+          sx={{ margin: 2 }}
+          onClick={() => {
+            <Link key={"/newTransaction"} href={"/newTransaction"}></Link>;
+          }}
+        >
           New Transaction
-        </Button>
+        </Button> */}
 
         <Box
           sx={{

@@ -1,5 +1,6 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
+import { initializeApp, getApps, getApp, getAuth } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import withFirebaseAuth from "react-with-firebase-auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAE0lkeKybpOqoPk7fevm5-UZV0o1UAsR8",
@@ -14,4 +15,31 @@ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export { db };
+// other Firebase setup stuff
+
+const auth = getAuth(app);
+
+const providers = {
+  googleProvider: new GoogleAuthProvider(),
+};
+
+const createComponentWithAuth = withFirebaseAuth({
+  providers,
+  firebaseAppAuth: auth,
+});
+
+const signInWithGoogle = () => {
+  signInWithPopup(auth, providers.googleProvider);
+};
+
+const signOutFirebase = () => {
+  signOut(auth);
+};
+
+export {
+  db,
+  auth,
+  createComponentWithAuth,
+  signInWithGoogle,
+  signOutFirebase as signOut,
+};

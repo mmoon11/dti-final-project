@@ -48,7 +48,11 @@ const theme = createTheme({
   },
 });
 
-const TransactionHeading = () => <Typography>Add a New Transaction</Typography>;
+const TransactionHeading = () => (
+  <Typography variant="h4" sx={{ margin: 2 }}>
+    Add a New Transaction
+  </Typography>
+);
 
 export default function Home() {
   return (

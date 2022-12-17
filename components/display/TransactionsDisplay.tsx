@@ -28,8 +28,8 @@ const TransactionsDisplay = () => {
   }, []);
 
   return (
-    <Box>
-      <Typography>Groceries</Typography>
+    <Box sx={{ margin: 2 }}>
+      <Typography variant="h4">Groceries</Typography>
       {groceries ? (
         <TransactionsList groceries={groceries} />
       ) : (
